@@ -46,8 +46,6 @@ const WelcomeScreen = ({ navigation }) => {
 export default WelcomeScreen
 
 
-console.log(width / 2)
-
 
 const styles = StyleSheet.create({
     container: {
