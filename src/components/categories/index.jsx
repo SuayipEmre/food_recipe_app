@@ -3,8 +3,8 @@ import React from 'react'
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import Animated, { FadeInDown } from 'react-native-reanimated'
-import { useCategories, useCategory } from '../../../store/features/categories/hooks';
-import { setCategory } from '../../../store/features/categories/actions';
+import { useCategories, useCategory } from '../../store/features/categories/hooks';
+import { setCategory } from '../../store/features/categories/actions';
 
 const Categories = () => {
     const categories = useCategories()

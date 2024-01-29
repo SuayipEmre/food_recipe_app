@@ -2,9 +2,12 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Animated,{FadeInDown} from 'react-native-reanimated'
+import { useNavigation } from '@react-navigation/native';
 
 const RecipeCard = ({ item, index }) => {
+
     
+    const navigation = useNavigation()
 
     let isEven = index % 2 == 0
     return (
@@ -12,7 +15,11 @@ const RecipeCard = ({ item, index }) => {
             <TouchableOpacity style={[{
                 paddingLeft: isEven ? 0 : 8,
                 paddingRight: isEven ? 8 : 0
-            }, styles.button]}>
+            }, styles.button]}
+            onPress={() => navigation.navigate('RecipeDetails', {
+                data : item
+            })}
+            >
 
                 <Image
                     style={[{

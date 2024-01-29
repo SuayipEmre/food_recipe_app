@@ -28,10 +28,23 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
                 }
               }
             }
+        }),
+
+        fetchRecipesDetails : builder.query({
+          query : (recipe_id) => {
+            return {
+              url : 'lookup.php',
+              method : 'GET',
+              params : {
+                i : recipe_id
+              }
+            }
+          }
+
         })
     })
 })
 
 
-export const {useFetchCategoriesQuery, useFetchRecipesQuery} = recipesApi
+export const {useFetchCategoriesQuery, useFetchRecipesQuery, useFetchRecipesDetailsQuery} = recipesApi
 export default recipesApi

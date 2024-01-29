@@ -1,13 +1,14 @@
 import { View, ScrollView, StatusBar, ActivityIndicator } from 'react-native'
 import React, { useEffect } from 'react'
-import HomeHeader from '../../components/homeContent/header'
-import TopContent from '../../components/homeContent/topContent'
-import Categories from '../../components/homeContent/categories'
-import Recipes from '../../components/homeContent/recipes'
 import { useFetchCategoriesQuery, useFetchRecipesQuery } from '../../store/features/APIs'
-import {  useCategory } from '../../store/features/categories/hooks'
+import { useCategory } from '../../store/features/categories/hooks'
 import { setCategories } from '../../store/features/categories/actions'
 import { setRecipes } from '../../store/features/recipe/actions'
+import Categories from '../../components/categories'
+import HomeHeader from '../../components/HomeHeader'
+import TopContent from '../../components/topContent'
+import Recipes from '../../components/recipes'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const HomeScreen = () => {
   const category = useCategory()
@@ -40,19 +41,19 @@ const HomeScreen = () => {
 
   const renderCategories = () => {
     if (isLoadingCategories) return <ActivityIndicator />
-    else if (isErrorCategories) return <Text> There was a issue. Please try again</Text>
+    else if (isErrorCategories) return <Text> There was an issue. Please try again</Text>
     return <Categories />
   }
 
   const renderRecipes = () => {
     if (isLoadingRecipes) return <ActivityIndicator />
-    else if (isErrorRecipes) return <Text> There was a issue. Please try again</Text>
+    else if (isErrorRecipes) return <Text> There was an issue. Please try again</Text>
     return <Recipes />
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: 12, }}>
-      < StatusBar barStyle="dark-content" />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: 12, }}>
+      <StatusBar barStyle="dark-content" />
 
 
       <ScrollView
@@ -70,7 +71,7 @@ const HomeScreen = () => {
           renderRecipes()
         }
       </ScrollView>
-    </View>
+    </SafeAreaView>
   )
 }
 

@@ -3,8 +3,8 @@ import React from 'react'
 import MasonryList from '@react-native-seoul/masonry-list';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import RecipeCard from './card';
-import { useCategories } from '../../../store/features/categories/hooks';
-import { useRecipes } from '../../../store/features/recipe/hooks';
+import { useCategories } from '../../store/features/categories/hooks';
+import { useRecipes } from '../../store/features/recipe/hooks';
 
 const Recipes = () => {
     const categories = useCategories()

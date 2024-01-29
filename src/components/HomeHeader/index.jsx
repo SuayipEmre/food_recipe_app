@@ -3,12 +3,12 @@ import React from 'react'
 import {BellIcon} from 'react-native-heroicons/outline'
 
 
-const {width, height} = Dimensions.get('window')
+const { height} = Dimensions.get('window')
 
 const HomeHeader = () => {
   return (
     <View style={styles.container}>
-      <Image source={require('../../../../assets/images/avatar.png')}  style={styles.avatar}/>
+      <Image source={require('../../../assets/images/avatar.png')}  style={styles.avatar}/>
       <BellIcon color='gray' size={height * 0.04} />
     </View>
   )

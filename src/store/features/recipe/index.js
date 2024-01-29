@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    recipes  : []
+    recipes  : [],
+    recipeDetails : []
 }
 export const recipes = createSlice({
     name : 'recipes',
@@ -12,10 +13,14 @@ export const recipes = createSlice({
         
         _setRecipes :(state, action) => {
           state.recipes = action.payload
-        }
+        },
+
+        _setRecipeDetails :(state, action) => {
+            state.recipeDetails = action.payload
+          }
     }
 })
 
 
-export const {_setRecipes} = recipes.actions
+export const {_setRecipes, _setRecipeDetails} = recipes.actions
 export default recipes.reducer
