@@ -1,4 +1,4 @@
-import { View, ScrollView, StatusBar, ActivityIndicator } from 'react-native'
+import {  ScrollView, StatusBar, ActivityIndicator } from 'react-native'
 import React, { useEffect } from 'react'
 import { useFetchCategoriesQuery, useFetchRecipesQuery } from '../../store/features/APIs'
 import { useCategory } from '../../store/features/categories/hooks'
@@ -6,9 +6,9 @@ import { setCategories } from '../../store/features/categories/actions'
 import { setRecipes } from '../../store/features/recipe/actions'
 import Categories from '../../components/categories'
 import HomeHeader from '../../components/HomeHeader'
-import TopContent from '../../components/topContent'
 import Recipes from '../../components/recipes'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import HomeTopContent from '../../components/HomeTopContent'
 
 const HomeScreen = () => {
   const category = useCategory()
@@ -61,7 +61,7 @@ const HomeScreen = () => {
         contentContainerStyle={{ paddingBottom: 50, }}>
 
         <HomeHeader />
-        <TopContent />
+        <HomeTopContent />
 
         {
           renderCategories()

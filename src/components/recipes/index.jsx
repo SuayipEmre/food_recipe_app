@@ -5,11 +5,12 @@ import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import RecipeCard from './card';
 import { useCategories } from '../../store/features/categories/hooks';
 import { useRecipes } from '../../store/features/recipe/hooks';
+import { filterRecipe } from '../../helpers/searchRecipe';
 
 const Recipes = () => {
     const categories = useCategories()
     const recipes = useRecipes()
-
+    const filteredRecipes = filterRecipe(recipes)
 
 
     return (
@@ -18,7 +19,7 @@ const Recipes = () => {
             {
                 categories.length == 0 ? null : (
                     <MasonryList
-                        data={recipes}
+                        data={filteredRecipes}
                         keyExtractor={(item) => item?.idMeal}
                         numColumns={2}
                         showsVerticalScrollIndicator={false}

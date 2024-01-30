@@ -32,6 +32,7 @@ const RecipeCard = ({ item, index }) => {
                     {
                         item.strMeal.length > 20 ? item.strMeal.slice(0, 20) + '...' : item.strMeal
                     }
+                    
                 </Text>
             </TouchableOpacity>
         </Animated.View>
