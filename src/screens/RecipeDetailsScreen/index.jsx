@@ -6,6 +6,7 @@ import { ChevronLeftIcon, HeartIcon } from 'react-native-heroicons/outline';
 import { useFetchRecipesDetailsQuery } from '../../store/features/APIs';
 import { setRecipeDetails } from '../../store/features/recipe/actions';
 import RecipeDetails from '../../components/recipeDetails';
+import Animated, { FadeIn } from 'react-native-reanimated';
 
 const RecipeDetailsScreen = ({ navigation, route }) => {
   const { data } = route.params
@@ -44,7 +45,7 @@ const RecipeDetailsScreen = ({ navigation, route }) => {
       <StatusBar style='light' />
 
 
-      <View style={styles.header_icons_container}>
+      <Animated.View entering={FadeIn.delay(200).duration(1000)} style={styles.header_icons_container}>
 
         <View style={styles.icon_container}>
           <ChevronLeftIcon size={hp(3.5)} strokeWidth={3.5} color='#fbbf24' onPress={() => navigation.goBack()} />
@@ -56,7 +57,7 @@ const RecipeDetailsScreen = ({ navigation, route }) => {
         </TouchableOpacity>
 
 
-      </View>
+      </Animated.View>
 
       {
         renderRecipeDetails()
@@ -71,14 +72,10 @@ export default RecipeDetailsScreen
 
 export const styles = StyleSheet.create({
   image: {
-    width: wp(98),
+    width: wp(100),
     height: hp(50),
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
-    marginTop: 4,
-
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
   header_icons_container: {
     position: 'absolute',

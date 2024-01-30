@@ -5,7 +5,7 @@ import { useRecipeDetails } from '../../store/features/recipe/hooks'
 import Information from './informations';
 import { ClockIcon, FireIcon, Square3Stack3DIcon, UsersIcon } from 'react-native-heroicons/outline';
 import YoutubeIframe from 'react-native-youtube-iframe';
-
+import Animated, { FadeInDown } from 'react-native-reanimated';
 const RecipeDetails = () => {
 
     const recipeDetails = useRecipeDetails()
@@ -36,30 +36,36 @@ const RecipeDetails = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{recipeDetails?.strMeal}</Text>
 
-            <Text style={styles.area_text}>{recipeDetails?.strArea}</Text>
+            <Animated.View entering={FadeInDown.duration(700).springify().damping(12)}>
+                <Text style={styles.title}>{recipeDetails?.strMeal}</Text>
 
-            <View style={styles.information_container}>
+                <Text style={styles.area_text}>{recipeDetails?.strArea}</Text>
+            </Animated.View>
+
+            <Animated.View entering={FadeInDown.delay(100).duration(700).springify().damping(12)} style={styles.information_container}>
                 <Information icon={<ClockIcon size={hp(4)} strokeWidth={2.5} color='#525252' />} value='35' text='mins' />
                 <Information icon={<UsersIcon size={hp(4)} strokeWidth={2.5} color='#525252' />} value='10' text='Servings' />
                 <Information icon={<FireIcon size={hp(4)} strokeWidth={2.5} color='#525252' />} value={'103'} text='cal' />
                 <Information icon={<Square3Stack3DIcon size={hp(4)} strokeWidth={2.5} color='#525252' />} text='Easy' />
-            </View>
+            </Animated.View>
 
-            <Text style={styles.sub_title}>Ingredients</Text>
-            {
-                ingredientsIndexes(recipeDetails).map(item => (
-                    <View key={item} style={styles.ingredients_container}>
-                        <View style={styles.round} />
 
-                        <View style={styles.ingredients_content}>
-                            <Text style={styles.measure_text}>{recipeDetails['strMeasure' + item]}</Text>
-                            <Text style={styles.ingredients_text}>{recipeDetails['strIngredient' + item]}</Text>
+            <Animated.View entering={FadeInDown.delay(200).duration(700).springify().damping(12)} >
+                <Text style={styles.sub_title}>Ingredients</Text>
+                {
+                    ingredientsIndexes(recipeDetails).map(item => (
+                        <View key={item} style={styles.ingredients_container}>
+                            <View style={styles.round} />
+
+                            <View style={styles.ingredients_content}>
+                                <Text style={styles.measure_text}>{recipeDetails['strMeasure' + item]}</Text>
+                                <Text style={styles.ingredients_text}>{recipeDetails['strIngredient' + item]}</Text>
+                            </View>
                         </View>
-                    </View>
-                ))
-            }
+                    ))
+                }
+            </Animated.View>
 
             <View>
                 <Text style={styles.sub_title}>Instructions</Text>
